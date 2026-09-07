@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HDP — Heart Disease Predictor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="mark">HDP</div>
+    <div class="masthead-text">
+      <h1>Heart Disease Predictor</h1>
+      <p>A Random Forest model estimates cardiovascular risk from eleven clinical measurements.</p>
+    </div>
+  </div>
+</header>
+
+<main class="chart">
+
+  <section class="chart-panel">
+    <h2>Patient chart</h2>
+    <form id="predict-form">
+
+      <div class="field-row">
+        <label for="age">Age <span class="unit">years</span></label>
+        <input type="number" id="age" name="age" min="1" max="120" value="54" required />
+      </div>
+
+      <div class="field-row">
+        <label for="sex">Sex</label>
+        <select id="sex" name="sex" required>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select>
+      </div>
+
+      <div class="field-row">
+        <label for="chest_pain_type">Chest pain type</label>
+        <select id="chest_pain_type" name="chest_pain_type" required>
+          <option value="ATA">Atypical angina</option>
+          <option value="NAP">Non-anginal pain</option>
+          <option value="ASY">Asymptomatic</option>
+          <option value="TA">Typical angina</option>
+        </select>
+      </div>
+
+      <div class="field-row">
+        <label for="resting_bp">Resting blood pressure <span class="unit">mm Hg</span></label>
+        <input type="number" id="resting_bp" name="resting_bp" min="0" max="300" value="130" required />
+      </div>
+
+      <div class="field-row">
+        <label for="cholesterol">Serum cholesterol <span class="unit">mm/dl</span></label>
+        <input type="number" id="cholesterol" name="cholesterol" min="0" max="700" value="246" required />
+      </div>
+
+      <div class="field-row">
+        <label for="fasting_bs">Fasting blood sugar &gt; 120 mg/dl</label>
+        <select id="fasting_bs" name="fasting_bs" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+
+      <div class="field-row">
+        <label for="resting_ecg">Resting ECG</label>
+        <select id="resting_ecg" name="resting_ecg" required>
+          <option value="Normal">Normal</option>
+          <option value="ST">ST-T wave abnormality</option>
+          <option value="LVH">Left ventricular hypertrophy</option>
+        </select>
+      </div>
+
+      <div class="field-row">
+        <label for="max_hr">Max heart rate achieved <span class="unit">bpm</span></label>
+        <input type="number" id="max_hr" name="max_hr" min="60" max="220" value="150" required />
+      </div>
+
+      <div class="field-row">
+        <label for="exercise_angina">Exercise-induced angina</label>
+        <select id="exercise_angina" name="exercise_angina" required>
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
+        </select>
+      </div>
+
+      <div class="field-row">
+        <label for="oldpeak">Oldpeak <span class="unit">ST depression</span></label>
+        <input type="number" id="oldpeak" name="oldpeak" step="0.1" min="-5" max="10" value="1.0" required />
+      </div>
+
+      <div class="field-row">
+        <label for="st_slope">ST segment slope</label>
+        <select id="st_slope" name="st_slope" required>
+          <option value="Up">Upsloping</option>
+          <option value="Flat">Flat</option>
+          <option value="Down">Downsloping</option>
+        </select>
+      </div>
+
+      <button type="submit" id="submit-btn">Run prediction</button>
+    </form>
+  </section>
+
+  <section class="chart-panel result-panel">
+    <h2>Reading</h2>
+    <div id="result" class="result-empty">
+      <p>Fill in the chart and run a prediction to see the reading here.</p>
+    </div>
+    <p class="disclaimer">This tool is a machine-learning demo trained on a public dataset. It is not a medical device and must never replace a clinician's judgment.</p>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>Model: Random Forest · Trained on the fedesoriano Heart Failure Prediction dataset (918 records) · <span id="metrics-line">loading metrics&hellip;</span></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

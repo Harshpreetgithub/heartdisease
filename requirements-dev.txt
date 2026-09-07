@@ -1,0 +1,4 @@
+# Only needed to run model/train_model.py locally.
+# The deployed Vercel API only needs requirements.txt.
+-r requirements.txt
+pandas==2.2.3
